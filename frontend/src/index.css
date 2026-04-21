@@ -1,0 +1,282 @@
+/* --- ПЕРЕМЕННЫЕ И ШРИФТЫ --- */
+:root {
+    --primary-blue: #163E6C;   /* Синий Силант */
+    --accent-red: #D20A11;    /* Красный Силант */
+    --bg-beige: #EBE6D6;      /* Бежевый фон Силант */
+    --white: #ffffff;
+    --text-dark: #212529;
+    --border-light: #dee2e6;
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+@font-face {
+    font-family: 'PT Astra Sans';
+    src: url('./fonts/PT-Astra-Sans_Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* --- ГЛОБАЛЬНЫЕ СТИЛИ --- */
+html, body, #root {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    background-color: var(--bg-beige);
+    font-family: 'PT Astra Sans', sans-serif;
+    color: var(--text-dark);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Резиновая обертка (Sticky Footer) */
+.App {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1 0 auto;
+    width: 95%; /* Тянущийся контейнер */
+    max-width: 1400px; /* Ограничение для 1920x1080 */
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+/* --- ШАПКА (HEADER) --- */
+.main-header {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    border-bottom: 4px solid var(--accent-red); /* Фирменная красная черта */
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.header-contacts {
+    font-weight: bold;
+    font-size: clamp(1rem, 2vw, 1.2rem); /* Адаптивный размер шрифта */
+}
+
+.header-bottom {
+    background-color: var(--primary-blue);
+    padding: 15px 0;
+    text-align: center;
+}
+
+.header-bottom h2 {
+    margin: 0;
+    font-weight: normal;
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+}
+
+/* --- КАРТОЧКИ И ТАБЛИЦЫ --- */
+.main-card {
+    background: var(--white);
+    border-radius: 0px;
+    padding: clamp(15px, 3vw, 30px);
+    box-shadow: var(--shadow);
+    margin-bottom: 30px;
+}
+
+.table-container {
+    overflow-x: auto; /* Резиновость для маленьких экранов */
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px; /* Чтобы таблица не сжималась в кашу на мобилках */
+}
+
+thead th {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    padding: 15px;
+    text-align: left;
+    font-size: 0.9rem;
+    border-right: 1px solid rgba(255,255,255,0.1);
+}
+
+tbody td {
+    padding: 12px 15px;
+    border-bottom: 1px solid var(--border-light);
+    font-size: 0.85rem;
+}
+
+.link-cell {
+    color: var(--primary-blue);
+    text-decoration: underline;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.link-cell:hover {
+    color: var(--accent-red);
+}
+
+/* --- ФОРМЫ И ФИЛЬТРЫ --- */
+.filters-section {
+    background: #fdfdfd;
+    border: 1px solid var(--border-light);
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    flex-wrap: wrap; /* Резиновость */
+    gap: 15px;
+    margin-bottom: 20px;
+    border-top-left-radius: 0;      /* Убираем радиус только сверху слева */
+    border-top-right-radius: 8px;   /* Остальные углы оставляем мягкими, если нужно */
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.search-input, select, input, textarea {
+    font-family: 'PT Astra Sans', sans-serif; /* Принудительно ставим шрифт */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.95rem;
+}
+
+.search-input:focus {
+    border-color: var(--primary-blue);
+    outline: none;
+}
+
+/* --- КНОПКИ --- */
+.btn-primary {
+    background-color: var(--accent-red);
+    color: var(--white);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: 'PT Astra Sans', sans-serif;
+    transition: background 0.3s, transform 0.1s;
+}
+
+.btn-primary:hover {
+    background-color: #a8080d;
+}
+
+.btn-secondary {
+    background: transparent;
+    border: 2px solid var(--primary-blue);
+    color: var(--primary-blue);
+    padding: 10px 25px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* --- ВКЛАДКИ (TABS) --- */
+.tabs-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: -1px; /* Прижимаем к карточке */
+}
+
+.tab-button {
+    padding: 12px 20px;
+    border: 1px solid var(--border-light);
+    background: #e9ecef;
+    cursor: pointer;
+    font-family: 'PT Astra Sans', sans-serif;
+    font-weight: bold;
+    border-radius: 8px 8px 0 0;
+    color: #666;
+}
+
+.tab-button.active {
+    background: var(--white);
+    border-bottom: 1px solid var(--white);
+    color: var(--primary-blue);
+    border-top: 3px solid var(--accent-red);
+}
+
+/* --- ПОДВАЛ (FOOTER) --- */
+.main-footer {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    padding: 20px 5%;
+    border-top: 4px solid var(--accent-red);
+    margin-top: auto;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+/* Ищем блок с логотипом в хедере */
+.header-top img, 
+.logo-placeholder {
+    width: 180px;         /* Оптимальный размер для десктопа */
+    height: auto;        /* Сохраняем пропорции */
+    display: block;
+    max-width: 100%;     /* Чтобы не вылезал за пределы на очень мелких экранах */
+    transition: width 0.3s ease;
+}
+
+/* На мобилках делаем чуть меньше, чтобы всё влезло */
+@media (max-width: 768px) {
+    .header-top img, 
+    .logo-placeholder {
+        width: 120px;
+        margin: 0 auto;  /* Центрируем, если контакты ушли вниз */
+    }
+}
+/* --- АДАПТИВНОСТЬ (МЕДИА-ЗАПРОСЫ) --- */
+
+/* Планшеты и мелкие ноутбуки (1366x768, 1024x768) */
+@media (max-width: 1366px) {
+    main { width: 98%; }
+    .main-card { padding: 20px; }
+}
+
+/* Мобильные устройства (360x640 и выше) */
+@media (max-width: 768px) {
+    .header-top {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .filters-section {
+        flex-direction: column;
+    }
+    
+    .search-input, select {
+        width: 100%; /* На мобилках инпуты во всю ширину */
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .tabs-container {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .tab-button {
+        border-radius: 4px;
+        width: 100%;
+        text-align: center;
+    }
+}
