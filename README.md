@@ -54,7 +54,7 @@
 
 3.  **Подготовьте администратора:**
     ```bash
-    docker-compose exec backend python manage.py createsuperuser
+    docker-compose exec web python manage.py createsuperuser
     ```
     *После этого Backend будет доступен на `localhost:8000`, а Frontend на `localhost:3000`.*
 
