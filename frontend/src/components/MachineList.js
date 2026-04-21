@@ -33,15 +33,16 @@ const MachineList = () => {
                 const rData = rRes.data.results || rRes.data;
 
                 setOptions({
-                    techModels: getUniq(mData, 'tech_model'),
+                    techModels: getUniq(mData, 'tech_model'), 
                     engineModels: getUniq(mData, 'engine_model'),
                     transModels: getUniq(mData, 'trans_model'),
                     driveAxles: getUniq(mData, 'drive_axle_model'),
                     steerAxles: getUniq(mData, 'steer_axle_model'),
                     serviceCompanies: getUniq(mData, 'service_company'),
-                    maintTypes: getUniq(tData, 'maint_type'),
-                    failureNodes: getUniq(rData, 'failure_node'),
-                    recoveryMethods: getUniq(rData, 'recovery_method')
+
+                    maintTypes: getUniq(tData, 'maint_type_name'),
+                    failureNodes: getUniq(rData, 'failure_node_name'), 
+                    recoveryMethods: [...new Set(rData.map(item => item.recovery_method_info?.name).filter(Boolean))]
                 });
             } catch (err) { console.error("Ошибка справочников", err); }
         };
